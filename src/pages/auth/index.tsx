@@ -1,10 +1,11 @@
+import axios from "axios";
 import * as S from "./style";
 import { ChangeEvent, useEffect, useState } from "react";
 
-const User = {
-  email: "shw9052@naver.com",
-  pw: "dkssud78@",
-};
+// const User = {
+//   email: "thdgustj3946@naver.com",
+//   pw: "1234",
+// };
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,10 +25,7 @@ export default function Login() {
   };
 
   const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    const regex = new RegExp(
-      // /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,24}$/
-      /.{3,}/
-    );
+    const regex = new RegExp(/.{3,}/);
     setPw(e.target.value);
     if (regex.test(e.target.value)) {
       setPwValid(true);
@@ -37,11 +35,20 @@ export default function Login() {
   };
 
   const onclickConfirmButton = () => {
-    if (email === User.email && pw === User.pw) {
-      alert("로그인에 성공하셨습니다.");
-    } else {
-      alert("등록되지 않은 회원입니다.");
-    }
+    axios({
+      method: "post",
+      url: "https://server.miso-gsm.site/signIn",
+      data: {
+        email: email,
+        password: pw,
+      },
+    }).then((res) => {
+      if (res) {
+        alert("로그인에 성공하셨습니다.");
+      } else {
+        alert("등록되지 않은 회원입니다.");
+      }
+    });
   };
 
   useEffect(() => {
