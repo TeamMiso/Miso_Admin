@@ -7,9 +7,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Auth />}></Route>
-          <Route path="/inquiry/*" element={<Inquiry />}></Route>
-          <Route path="*" element={<Auth />}></Route>
+          <Route path="/" element={<Inquiry />}></Route>
+          <Route path="/auth" element={<Auth />}></Route>
         </Routes>
       </BrowserRouter>
     </>
