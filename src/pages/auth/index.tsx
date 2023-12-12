@@ -9,7 +9,6 @@ const User = {
 export default function Login() {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
