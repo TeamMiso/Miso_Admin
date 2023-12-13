@@ -4,7 +4,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 // const User = {
 //   email: "thdgustj3946@naver.com",
-//   pw: "1234",
+//   pw: "1234",@
 // };
 
 export default function Login() {
@@ -42,14 +42,19 @@ export default function Login() {
         email: email,
         password: pw,
       },
-    }).then((res) => {
-      if (res) {
-        alert("로그인에 성공하셨습니다.");
-      } else {
-        alert("등록되지 않은 회원입니다.");
-      }
-    });
+    })
+      .then((res) => {
+        if (res) {
+          alert("로그인에 성공하셨습니다.");
+        } else {
+          alert("등록되지 않은 회원입니다.");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
+  1;
 
   useEffect(() => {
     if (emailValid && pwValid) {
