@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -11,6 +13,12 @@ const Detail = () => {
   function access() {
     alert("문의가 채택 되었습니다.");
   }
+
+  useEffect(() => {
+    axios.get("https://server.miso-gsm.site/").then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   return (
     <S.InquiryWrapper>

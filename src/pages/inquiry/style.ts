@@ -43,7 +43,6 @@ export const TypeText = styled.span`
   margin-bottom: 0.45rem;
   font-size: 1rem;
   display: flex;
-  color: #bfbfbf;
 `;
 
 export const TitleText = styled.span`

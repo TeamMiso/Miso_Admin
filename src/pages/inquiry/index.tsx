@@ -5,34 +5,53 @@ import { useEffect } from "react";
 
 interface InquiryItemType {
   id: string;
-  url: string;
-  status: string;
+  inquiryDate: string;
+  inquiryStatus: string;
   title: string;
-  date: string;
+  imageUrl: string;
 }
 
 const Inquiry = () => {
   const inquiryItemList: InquiryItemType[] = [
     {
       id: "1",
-      url: "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
-      status: "검토 중",
+      inquiryDate: "23.12.10",
+      inquiryStatus: "검토 중",
       title: "유색 페트병이 등록되어 있지 않습니다",
-      date: "23.12.10",
+      imageUrl:
+        "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
     },
     {
       id: "2",
-      url: "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
-      status: "검토 중",
+      inquiryDate: "23.12.10",
+      inquiryStatus: "검토 중",
       title: "유색 페트병이 등록되어 있지 않습니다",
-      date: "23.12.10",
+      imageUrl:
+        "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
     },
     {
       id: "3",
-      url: "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
-      status: "검토 중",
+      inquiryDate: "23.12.10",
+      inquiryStatus: "채택됨",
       title: "유색 페트병이 등록되어 있지 않습니다",
-      date: "23.12.10",
+      imageUrl:
+        "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
+    },
+    {
+      id: "4",
+      inquiryDate: "23.12.10",
+      inquiryStatus: "비채택됨",
+      title: "유색 페트병이 등록되어 있지 않습니다",
+      imageUrl:
+        "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
+    },
+    {
+      id: "5",
+      inquiryDate: "23.12.10",
+      inquiryStatus: "검토 중",
+      title: "유색 페트병이 등록되어 있지 않습니다",
+      imageUrl:
+        "https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg",
     },
   ];
 
@@ -47,17 +66,28 @@ const Inquiry = () => {
       <S.InquiryContainer>
         {inquiryItemList.map((data) => (
           <Link to={`/detail/${data.id}`}>
-            <S.InquiryItem>
+            <S.InquiryItem key={data.id}>
               <S.InquiryItemInner>
                 <S.ImgBox
                   style={{
-                    backgroundImage: `url(${data.url})`,
+                    backgroundImage: `url(${data.imageUrl})`,
                   }}
                 />
                 <S.TextBox>
-                  <S.TypeText>{data.status}</S.TypeText>
+                  <S.TypeText
+                    style={{
+                      color:
+                        data.inquiryStatus === "검토 중"
+                          ? "#BFBFBF"
+                          : data.inquiryStatus === "채택됨"
+                          ? "#25D07D"
+                          : "#DB3734",
+                    }}
+                  >
+                    {data.inquiryStatus}
+                  </S.TypeText>
                   <S.TitleText>{data.title}</S.TitleText>
-                  <S.DateText>{data.date}</S.DateText>
+                  <S.DateText>{data.inquiryDate}</S.DateText>
                 </S.TextBox>
               </S.InquiryItemInner>
             </S.InquiryItem>

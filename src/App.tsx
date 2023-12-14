@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Auth from "./pages/auth";
 import Inquiry from "./pages/inquiry";
-import Detail from "./pages/inquiry/create";
+import Detail from "./pages/inquiry/detail";
 
 function App() {
   return (
