@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -36,6 +36,14 @@ const Detail = () => {
     });
   }, []);
 
+  const [mainText, setMainText] = useState("");
+
+  const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setMainText(e.target.value);
+  };
+
+  console.log(mainText);
+
   return (
     <S.InquiryWrapper>
       <S.InquiryContainer>
@@ -59,7 +67,10 @@ const Detail = () => {
                 <div>
                   <S.ValueTitle>문의내용</S.ValueTitle>
                   <S.MainText>{object.content}</S.MainText>
-                  <S.AnswerBox placeholder="문의 내용 입력" />
+                  <S.AnswerBox
+                    placeholder="문의 내용 입력"
+                    onChange={handleText}
+                  />
                 </div>
                 <S.BtnContainer>
                   <S.AccessBtn onClick={() => access()}>답변하기</S.AccessBtn>
