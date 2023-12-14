@@ -64,6 +64,7 @@ const Inquiry = () => {
   return (
     <S.InquiryWrapper>
       <S.InquiryContainer>
+        <S.Title>문의목록</S.Title>
         {inquiryItemList.map((data) => (
           <Link to={`/detail/${data.id}`}>
             <S.InquiryItem key={data.id}>

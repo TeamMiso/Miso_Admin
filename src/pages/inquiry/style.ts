@@ -3,7 +3,12 @@ import styled from "styled-components";
 export const InquiryWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 10rem;
+  padding-top: 4.25rem;
+`;
+
+export const Title = styled.span`
+  font-size: 2.25rem;
+  margin-left: 1.25rem;
 `;
 
 export const InquiryContainer = styled.div`
@@ -17,6 +22,10 @@ export const InquiryItem = styled.div`
   display: flex;
   align-items: center;
   height: 7rem;
+  margin-bottom: 1rem;
+  &:first-child {
+    margin-top: 1.25rem;
+  }
 `;
 
 export const InquiryItemInner = styled.div`
