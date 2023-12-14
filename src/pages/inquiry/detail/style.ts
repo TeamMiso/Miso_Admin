@@ -3,16 +3,7 @@ import styled from "styled-components";
 export const InquiryWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 10rem;
-`;
-
-export const BackText = styled.span`
-  position: absolute;
-  left: 23.5rem;
-  top: 5rem;
-  font-size: 1.25rem;
-  cursor: pointer;
-  color: #3484db;
+  padding-top: 5rem;
 `;
 
 export const InquiryContainer = styled.div`
@@ -20,8 +11,16 @@ export const InquiryContainer = styled.div`
   height: 100%;
 `;
 
+export const BackText = styled.span`
+  font-size: 1.25rem;
+  margin-left: 1.25rem;
+  cursor: pointer;
+  color: #3484db;
+`;
+
 export const InquiryItem = styled.div`
   display: flex;
+  margin-top: 1rem;
   align-items: center;
 `;
 
@@ -88,6 +87,14 @@ export const ValueTitle = styled.span`
 export const MainText = styled.div`
   margin-top: 1rem;
   font-size: 1rem;
+  height: 12rem;
+`;
+
+export const AnswerBox = styled.textarea`
+  width: 99%;
+  margin-top: 1rem;
+  height: 8.25rem;
+  resize: none;
 `;
 
 export const BtnContainer = styled.div`

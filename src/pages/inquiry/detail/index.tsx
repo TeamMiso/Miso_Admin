@@ -26,12 +26,8 @@ const object: InquiryItemType = {
 const Detail = () => {
   const navigate = useNavigate();
 
-  function notAccess() {
-    alert("문의가 거부 되었습니다.");
-  }
-
   function access() {
-    alert("문의가 채택 되었습니다.");
+    alert("답변이 완료 되었습니다.");
   }
 
   useEffect(() => {
@@ -42,8 +38,8 @@ const Detail = () => {
 
   return (
     <S.InquiryWrapper>
-      <S.BackText onClick={() => navigate("/")}>{"< 돌아가기"}</S.BackText>
       <S.InquiryContainer>
+        <S.BackText onClick={() => navigate("/")}>{"< 돌아가기"}</S.BackText>
         <S.InquiryItem>
           <S.InquiryItemInner>
             <S.TextBox>
@@ -63,12 +59,10 @@ const Detail = () => {
                 <div>
                   <S.ValueTitle>문의내용</S.ValueTitle>
                   <S.MainText>{object.content}</S.MainText>
+                  <S.AnswerBox placeholder="문의 내용 입력" />
                 </div>
                 <S.BtnContainer>
-                  <S.NotAccessBtn onClick={() => notAccess()}>
-                    거부하기
-                  </S.NotAccessBtn>
-                  <S.AccessBtn onClick={() => access()}>채택하기</S.AccessBtn>
+                  <S.AccessBtn onClick={() => access()}>답변하기</S.AccessBtn>
                 </S.BtnContainer>
               </S.MainTextBox>
             </S.MainBox>
