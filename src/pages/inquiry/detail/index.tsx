@@ -27,11 +27,28 @@ const Detail = () => {
   const navigate = useNavigate();
 
   function access() {
-    alert("답변이 완료 되었습니다.");
+    axios({
+      method: "post",
+      url: `https://server.miso-gsm.site/adopt/${object.id}`,
+      data: {
+        title: object.title,
+        content: mainText,
+      },
+    })
+      .then((res) => {
+        if (res) {
+          alert("답변이 완료 되었습니다.");
+        } else {
+          alert("권한이 없습니다.");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   useEffect(() => {
-    axios.get("https://server.miso-gsm.site/").then((res) => {
+    axios.get(`https://server.miso-gsm.site/${object.id}`).then((res) => {
       console.log(res);
     });
   }, []);
@@ -43,6 +60,7 @@ const Detail = () => {
   };
 
   console.log(mainText);
+  console.log(object);
 
   return (
     <S.InquiryWrapper>
@@ -60,7 +78,7 @@ const Detail = () => {
             <S.MainBox>
               <S.ImgBox
                 style={{
-                  backgroundImage: `url('https://opgg-com-image.akamaized.net/attach/images/20200420133621.1102639.jpg')`,
+                  backgroundImage: `url(${object.imageUrl})`,
                 }}
               />
               <S.MainTextBox>

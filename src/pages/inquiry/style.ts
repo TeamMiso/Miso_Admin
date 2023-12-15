@@ -13,7 +13,7 @@ export const Title = styled.span`
 
 export const InquiryContainer = styled.div`
   width: 75rem;
-  height: 100%;
+  height: 10%;
 `;
 
 export const InquiryItem = styled.div`
@@ -22,9 +22,8 @@ export const InquiryItem = styled.div`
   display: flex;
   align-items: center;
   height: 7rem;
-  margin-bottom: 1rem;
-  &:first-child {
-    margin-top: 1.25rem;
+  &:hover {
+    background-color: #e2e2e2;
   }
 `;
 

@@ -37,7 +37,7 @@ export default function Login() {
   const onclickConfirmButton = () => {
     axios({
       method: "post",
-      url: "https://server.miso-gsm.site/signIn",
+      url: `https://server.miso-gsm.site/signIn`,
       data: {
         email: email,
         password: pw,
@@ -54,7 +54,6 @@ export default function Login() {
         alert(err);
       });
   };
-  1;
 
   useEffect(() => {
     if (emailValid && pwValid) {
