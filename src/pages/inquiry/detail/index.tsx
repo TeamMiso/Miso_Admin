@@ -28,8 +28,8 @@ const Detail = () => {
 
   function access() {
     axios({
-      method: "post",
-      url: `https://server.miso-gsm.site/adopt/${object.id}`,
+      method: "patch",
+      url: `https://server.miso-gsm.site/respond/${object.id}`,
       data: {
         title: object.title,
         content: mainText,
