@@ -13,23 +13,18 @@ interface InquiryItemType {
 
 const Inquiry = () => {
   const [inquiryItemList, setInquiryItemList] = useState<InquiryItemType[]>([]);
-
   const fetch = async () => {
-    await axios
-      .get("https://server.miso-gsm.site/inquiry/all", {
+    const { data } = await axios.get(
+      "https://server.miso-gsm.site/inquiry/all",
+      {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
-      })
-      .then((res) => {
-        setInquiryItemList(res.data);
-      })
-      .catch((error) => {
-        alert("리스트를 불러오는 중 오류 발생:" + error);
-      });
-  };
+      }
+    );
 
-  console.log(inquiryItemList);
+    setInquiryItemList(data.inquiryList);
+  };
 
   useEffect(() => {
     fetch();
@@ -39,7 +34,7 @@ const Inquiry = () => {
     <S.InquiryWrapper>
       <S.InquiryContainer>
         <S.Title>문의목록</S.Title>
-        {Array.isArray(inquiryItemList) &&
+        {inquiryItemList.length > 0 &&
           inquiryItemList.map((data) => (
             <Link key={data.id} to={`/detail/${data.id}`}>
               <S.InquiryItem key={data.id}>
@@ -53,14 +48,18 @@ const Inquiry = () => {
                     <S.TypeText
                       style={{
                         color:
-                          data.inquiryStatus === "검토 중"
+                          data.inquiryStatus === "WAIT"
                             ? "#BFBFBF"
-                            : data.inquiryStatus === "채택됨"
+                            : data.inquiryStatus === "CONFLICT"
                             ? "#25D07D"
                             : "#DB3734",
                       }}
                     >
-                      {data.inquiryStatus}
+                      {data.inquiryStatus === "WAIT"
+                        ? "검토 중"
+                        : data.inquiryStatus === "CONFLICT"
+                        ? "채택 됨"
+                        : "비채택 됨"}
                     </S.TypeText>
                     <S.TitleText>{data.title}</S.TitleText>
                     <S.DateText>{data.inquiryDate}</S.DateText>
