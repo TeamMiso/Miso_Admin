@@ -88,10 +88,11 @@ export const MainText = styled.div`
   margin-top: 1rem;
   font-size: 1rem;
   height: 12rem;
+  width: 45rem;
 `;
 
 export const AnswerBox = styled.textarea`
-  width: 99%;
+  width: 44.5rem;
   margin-top: 1rem;
   height: 8.25rem;
   resize: none;
@@ -113,17 +114,6 @@ export const BtnContainer = styled.div`
     height: 3.25rem;
     font-size: 1.5rem;
     cursor: pointer;
-  }
-`;
-
-export const NotAccessBtn = styled.div`
-  background-color: #df454a;
-  &:hover {
-    background-color: #f5f5f5;
-    width: 11rem;
-    height: 3rem;
-    border: solid 0.125rem #df454a;
-    color: #df454a;
   }
 `;
 
