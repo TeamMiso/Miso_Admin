@@ -64,7 +64,18 @@ const Inquiry = () => {
                     {data.inquiryStatus === "WAIT" ? "검토 중" : "답변 완료"}
                   </S.TypeText>
                   <S.TitleText>{data.title}</S.TitleText>
-                  <S.DateText>{data.inquiryDate}</S.DateText>
+                  <S.DateText>
+                    {`${data?.inquiryDate.slice(
+                      0,
+                      4
+                    )}년 ${data?.inquiryDate.slice(
+                      5,
+                      7
+                    )}월 ${data?.inquiryDate.slice(
+                      8,
+                      10
+                    )}일 ${data?.inquiryDate.slice(11, 16)}`}
+                  </S.DateText>
                 </S.TextBox>
               </S.InquiryItemInner>
             </S.InquiryItem>

@@ -93,7 +93,15 @@ const Detail = () => {
             <S.TextBox>
               <S.TitleText>{title}</S.TitleText>
               <S.SemiTextBox>
-                <S.DateText>{inquiryDate}</S.DateText>
+                <S.DateText>
+                  {`${inquiryDate.slice(0, 4)}년 ${inquiryDate.slice(
+                    5,
+                    7
+                  )}월 ${inquiryDate.slice(8, 10)}일 ${inquiryDate.slice(
+                    11,
+                    16
+                  )}`}
+                </S.DateText>
                 <S.TypeText
                   style={{
                     color: inquiryStatus === "WAIT" ? "#BFBFBF" : "#25D07D",
@@ -124,7 +132,8 @@ const Detail = () => {
                   <S.AnswerText
                     style={{
                       display: inquiryStatus === "WAIT" ? "none" : "flex",
-                    }}>
+                    }}
+                  >
                     {inquiryText}
                   </S.AnswerText>
                 </div>
