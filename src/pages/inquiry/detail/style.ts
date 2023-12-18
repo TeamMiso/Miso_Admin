@@ -55,7 +55,6 @@ export const DateText = styled.span`
 export const TypeText = styled.span`
   font-size: 1.25rem;
   display: flex;
-  color: #bfbfbf;
 `;
 
 export const MainBox = styled.div`
@@ -97,6 +96,11 @@ export const AnswerBox = styled.textarea`
   height: 8.25rem;
   resize: none;
 `;
+
+export const AnswerText = styled.div`
+  margin-top: 1rem;
+  font-size: 1rem;
+`
 
 export const BtnContainer = styled.div`
   display: flex;

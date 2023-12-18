@@ -15,6 +15,8 @@ const Detail = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [inquiryStatus, setInquiryStatus] = useState("");
   const [inquiryDate, setInquiryDate] = useState("");
+  const [inquiryText, setInquiryText] = useState("");
+  const [mainText, setMainText] = useState("");
 
   const fetch = async () => {
     const { data } = await axios.get(
@@ -35,6 +37,7 @@ const Detail = () => {
 
   useEffect(() => {
     fetch();
+    fetchInquiry();
   }, []);
 
   function access() {
@@ -62,13 +65,24 @@ const Detail = () => {
       });
   }
 
-  const [mainText, setMainText] = useState("");
+  const fetchInquiry = async () => {
+    const { data } = await axios.get(
+      `https://server.miso-gsm.site/notification/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    );
+
+    setInquiryText(data.content);
+  };
+
+  console.log(inquiryText);
 
   const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMainText(e.target.value);
   };
-
-  console.log(mainText);
 
   return (
     <S.InquiryWrapper>
@@ -80,7 +94,13 @@ const Detail = () => {
               <S.TitleText>{title}</S.TitleText>
               <S.SemiTextBox>
                 <S.DateText>{inquiryDate}</S.DateText>
-                <S.TypeText>{inquiryStatus}</S.TypeText>
+                <S.TypeText
+                  style={{
+                    color: inquiryStatus === "WAIT" ? "#BFBFBF" : "#25D07D",
+                  }}
+                >
+                  {inquiryStatus === "WAIT" ? "검토 중" : "답변 완료"}
+                </S.TypeText>
               </S.SemiTextBox>
             </S.TextBox>
             <S.MainBox>
@@ -93,10 +113,20 @@ const Detail = () => {
                 <div>
                   <S.ValueTitle>문의내용</S.ValueTitle>
                   <S.MainText>{content}</S.MainText>
+                  <S.ValueTitle>문의답변</S.ValueTitle>
                   <S.AnswerBox
+                    style={{
+                      display: inquiryStatus === "WAIT" ? "flex" : "none",
+                    }}
                     placeholder="문의 내용 입력"
                     onChange={handleText}
                   />
+                  <S.AnswerText
+                    style={{
+                      display: inquiryStatus === "WAIT" ? "none" : "flex",
+                    }}>
+                    {inquiryText}
+                  </S.AnswerText>
                 </div>
                 <S.BtnContainer
                   style={{
