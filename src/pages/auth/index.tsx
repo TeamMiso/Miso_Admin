@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as S from "./style";
 import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // const User = {
 //   email: "thdgustj3946@naver.com",
@@ -8,6 +9,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 // };
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [emailValid, setEmailValid] = useState(false);
@@ -34,25 +37,97 @@ export default function Login() {
     }
   };
 
-  const onclickConfirmButton = () => {
-    axios({
-      method: "post",
-      url: `https://server.miso-gsm.site/signIn`,
-      data: {
+  // const onclickConfirmButton = async () => {
+  //   await axios({
+  //     method: "post",
+  //     url: `https://server.miso-gsm.site/auth/signIn`,
+  //     data: {
+  //       email: email,
+  //       password: pw,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       if (res) {
+  //         alert("로그인에 성공하셨습니다.");
+  //         console.log(res)
+  //       } else {
+  //         alert("등록되지 않은 회원입니다.");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       alert(err);
+  //     });
+  // };
+
+  const api = axios.create({
+    baseURL: "https://server.miso-gsm.site",
+  });
+
+  const refreshAccessToken = async () => {
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+
+      const response = await api.post("/auth/refreshToken", {
+        refreshToken: refreshToken,
+      });
+
+      const newAccessToken = response.data.accessToken;
+
+      localStorage.setItem("accessToken", newAccessToken);
+
+      return newAccessToken;
+    } catch (error) {
+      console.error("토큰 갱신 실패:", error);
+      throw error;
+    }
+  };
+
+  const onclickConfirmButton = async () => {
+    try {
+      const response = await api.post("/auth/signIn", {
         email: email,
         password: pw,
-      },
-    })
-      .then((res) => {
-        if (res) {
-          alert("로그인에 성공하셨습니다.");
-        } else {
-          alert("등록되지 않은 회원입니다.");
-        }
-      })
-      .catch((err) => {
-        alert(err);
       });
+
+      if (response.status === 200) {
+        alert("로그인에 성공하셨습니다.");
+        console.log(response);
+        navigate("/");
+
+        localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem(
+          "Bearer" + " refreshToken",
+          response.data.refreshToken
+        );
+      } else {
+        alert("등록되지 않은 회원입니다.");
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 401) {
+        try {
+          await refreshAccessToken();
+
+          const response = await api.post("/auth/signIn", {
+            email: email,
+            password: pw,
+          });
+
+          if (response.status === 200) {
+            alert("로그인에 성공하셨습니다.");
+            console.log(response);
+
+            localStorage.setItem("accessToken", response.data.accessToken);
+            localStorage.setItem("refreshToken", response.data.refreshToken);
+          } else {
+            alert("등록되지 않은 회원입니다.");
+          }
+        } catch (refreshError) {
+          alert("토큰 갱신 및 로그인 실패");
+        }
+      } else {
+        alert("로그인 실패");
+      }
+    }
   };
 
   useEffect(() => {
