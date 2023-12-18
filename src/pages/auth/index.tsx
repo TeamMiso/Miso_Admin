@@ -37,28 +37,6 @@ export default function Login() {
     }
   };
 
-  // const onclickConfirmButton = async () => {
-  //   await axios({
-  //     method: "post",
-  //     url: `https://server.miso-gsm.site/auth/signIn`,
-  //     data: {
-  //       email: email,
-  //       password: pw,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (res) {
-  //         alert("로그인에 성공하셨습니다.");
-  //         console.log(res)
-  //       } else {
-  //         alert("등록되지 않은 회원입니다.");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       alert(err);
-  //     });
-  // };
-
   const api = axios.create({
     baseURL: "https://server.miso-gsm.site",
   });
@@ -96,8 +74,8 @@ export default function Login() {
 
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem(
-          "Bearer" + " refreshToken",
-          response.data.refreshToken
+          "refreshToken",
+          "Bearer " + response.data.refreshToken
         );
       } else {
         alert("등록되지 않은 회원입니다.");

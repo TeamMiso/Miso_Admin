@@ -60,7 +60,6 @@ const Detail = () => {
   };
 
   console.log(mainText);
-  console.log(object);
 
   return (
     <S.InquiryWrapper>
