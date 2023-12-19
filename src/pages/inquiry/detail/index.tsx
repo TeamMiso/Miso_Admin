@@ -55,7 +55,7 @@ const Detail = () => {
       .then((res) => {
         if (res) {
           alert("답변이 완료 되었습니다.");
-          navigate("/inquiry");
+          navigate("/");
         } else {
           alert("권한이 없습니다.");
         }
@@ -87,7 +87,7 @@ const Detail = () => {
   return (
     <S.InquiryWrapper>
       <S.InquiryContainer>
-        <S.BackText onClick={() => navigate("/inquiry")}>
+        <S.BackText onClick={() => navigate("/")}>
           {"< 돌아가기"}
         </S.BackText>
         <S.InquiryItem>

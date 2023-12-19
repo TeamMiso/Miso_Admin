@@ -3,11 +3,6 @@ import * as S from "./style";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// const User = {
-//   email: "thdgustj3946@naver.com",
-//   pw: "1234",@
-// };
-
 export default function Login() {
   const navigate = useNavigate();
 
@@ -70,7 +65,7 @@ export default function Login() {
       if (response.status === 200) {
         alert("로그인에 성공하셨습니다.");
         console.log(response);
-        navigate("/inquiry");
+        navigate("/");
 
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem(
