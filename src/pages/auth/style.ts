@@ -6,6 +6,7 @@ export const Page = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 `;
 
 export const ContentContainer = styled.div`

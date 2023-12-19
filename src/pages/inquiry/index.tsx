@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Header } from "../../components";
 
 interface InquiryItemType {
   id: any;
@@ -34,52 +35,58 @@ const Inquiry = () => {
 
   return (
     <S.InquiryWrapper>
+      <Header />
       <S.InquiryContainer>
         <S.Title>문의목록</S.Title>
-        {inquiryItemList.length > 0 &&
-          inquiryItemList.map((data) => (
-            <S.InquiryItem
-              onClick={() =>
-                navigate(`/detail/${data.id}`, {
-                  state: {
-                    id: `${data.id}`,
-                  },
-                })
-              }
-              key={data.id}
-            >
-              <S.InquiryItemInner>
-                <S.ImgBox
-                  style={{
-                    backgroundImage: `url(${data.imageUrl})`,
-                  }}
-                />
-                <S.TextBox>
-                  <S.TypeText
+        <S.InquiryItemContainer>
+          {inquiryItemList.length > 0 &&
+            inquiryItemList.map((data) => (
+              <S.InquiryItem
+                onClick={() =>
+                  navigate(`/detail/${data.id}`, {
+                    state: {
+                      id: `${data.id}`,
+                    },
+                  })
+                }
+                key={data.id}
+              >
+                <S.InquiryItemInner>
+                  <S.TextBox>
+                    <S.SemiTextContainer>
+                      <S.DateText>
+                        {`${data?.inquiryDate.slice(
+                          2,
+                          4
+                        )}.${data?.inquiryDate.slice(
+                          5,
+                          7
+                        )}.${data?.inquiryDate.slice(8, 10)}`}
+                      </S.DateText>
+                      <S.TypeText
+                        style={{
+                          color:
+                            data.inquiryStatus === "WAIT"
+                              ? "#BFBFBF"
+                              : "#25D07D",
+                        }}
+                      >
+                        {data.inquiryStatus === "WAIT"
+                          ? "검토 중"
+                          : "답변 완료"}
+                      </S.TypeText>
+                    </S.SemiTextContainer>
+                    <S.TitleText>{data.title}</S.TitleText>
+                  </S.TextBox>
+                  <S.ImgBox
                     style={{
-                      color:
-                        data.inquiryStatus === "WAIT" ? "#BFBFBF" : "#25D07D",
+                      backgroundImage: `url(${data.imageUrl})`,
                     }}
-                  >
-                    {data.inquiryStatus === "WAIT" ? "검토 중" : "답변 완료"}
-                  </S.TypeText>
-                  <S.TitleText>{data.title}</S.TitleText>
-                  <S.DateText>
-                    {`${data?.inquiryDate.slice(
-                      0,
-                      4
-                    )}년 ${data?.inquiryDate.slice(
-                      5,
-                      7
-                    )}월 ${data?.inquiryDate.slice(
-                      8,
-                      10
-                    )}일 ${data?.inquiryDate.slice(11, 16)}`}
-                  </S.DateText>
-                </S.TextBox>
-              </S.InquiryItemInner>
-            </S.InquiryItem>
-          ))}
+                  />
+                </S.InquiryItemInner>
+              </S.InquiryItem>
+            ))}
+        </S.InquiryItemContainer>
       </S.InquiryContainer>
     </S.InquiryWrapper>
   );
