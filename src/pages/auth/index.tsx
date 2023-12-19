@@ -64,7 +64,6 @@ export default function Login() {
 
       if (response.status === 200) {
         alert("로그인에 성공하셨습니다.");
-        console.log(response);
         navigate("/");
 
         localStorage.setItem("accessToken", response.data.accessToken);
@@ -87,7 +86,6 @@ export default function Login() {
 
           if (response.status === 200) {
             alert("로그인에 성공하셨습니다.");
-            console.log(response);
 
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
