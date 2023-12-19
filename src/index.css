@@ -12,3 +12,6 @@ body {
 a {
   text-decoration: none;
 }
+textarea:placeholder-shown {
+  font-family: "SUIT", sans-serif;
+}
