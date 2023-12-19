@@ -8,9 +8,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Inquiry />}></Route>
-          <Route path="/detail/:id" element={<Detail />}></Route>
-          <Route path="/auth" element={<Auth />}></Route>
+          <Route path="/" element={<Auth />}></Route>
+          <Route path="/inquiry/:id" element={<Detail />}></Route>
+          <Route path="/inquiry" element={<Inquiry />}></Route>
         </Routes>
       </BrowserRouter>
     </>

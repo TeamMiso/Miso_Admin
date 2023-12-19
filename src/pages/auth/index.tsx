@@ -70,7 +70,7 @@ export default function Login() {
       if (response.status === 200) {
         alert("로그인에 성공하셨습니다.");
         console.log(response);
-        navigate("/");
+        navigate("/inquiry");
 
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem(

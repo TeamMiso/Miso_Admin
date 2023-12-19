@@ -40,7 +40,7 @@ const Inquiry = () => {
           inquiryItemList.map((data) => (
             <S.InquiryItem
               onClick={() =>
-                navigate(`/detail/${data.id}`, {
+                navigate(`/inquiry/${data.id}`, {
                   state: {
                     id: `${data.id}`,
                   },
