@@ -98,7 +98,7 @@ export default function Login() {
           alert("토큰 갱신 및 로그인 실패");
         }
       } else {
-        alert("로그인 실패");
+        alert("이메일 또는 비밀번호가 일치하지 않습니다.");
       }
     }
   };
@@ -113,48 +113,47 @@ export default function Login() {
 
   return (
     <S.Page>
-      <S.TitleWrap>
-        이메일과 비밀번호를
-        <br />
-        입력해주세요
-      </S.TitleWrap>
-      <S.ContentWrap>
-        <S.InputTitle>이메일 주소</S.InputTitle>
-        <S.InputWrap>
-          <S.Input
-            placeholder="text@gmail.com"
-            type="text"
-            value={email}
-            onChange={handleEmail}
-          />
-        </S.InputWrap>
-        <S.ErrorMessageWrap>
-          {!emailValid && email.length > 0 && (
-            <div>올바른 이메일을 입력해주세요.</div>
-          )}
-        </S.ErrorMessageWrap>
-
-        <S.InputTitle style={{ marginTop: "26px" }}>비밀번호</S.InputTitle>
-        <S.InputWrap>
-          <S.Input
-            placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            type="password"
-            value={pw}
-            onChange={handlePassword}
-          />
-        </S.InputWrap>
-        <S.ErrorMessageWrap>
-          {!pwValid && pw.length > 0 && (
-            <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</div>
-          )}
-        </S.ErrorMessageWrap>
-      </S.ContentWrap>
-
-      <div>
-        <S.BottomButton onClick={onclickConfirmButton} disabled={notAllow}>
-          확인
-        </S.BottomButton>
-      </div>
+      <S.ContentContainer>
+        <S.ContentWrap>
+          <S.TitleContainer>
+            <S.Title>미소</S.Title>
+            <S.SemiTitle>환경을 웃음으로 바꾸다 :)</S.SemiTitle>
+          </S.TitleContainer>
+          <S.InputContainer>
+            <S.InputWrap>
+              <S.Input
+                placeholder="이메일"
+                type="text"
+                value={email}
+                onChange={handleEmail}
+              />
+            </S.InputWrap>
+            <S.ErrorMessageWrap>
+              {!emailValid && email.length > 0 && (
+                <span>올바른 이메일을 입력해주세요.</span>
+              )}
+            </S.ErrorMessageWrap>
+            <S.InputWrap>
+              <S.Input
+                placeholder="비밀번호"
+                type="password"
+                value={pw}
+                onChange={handlePassword}
+              />
+            </S.InputWrap>
+            <S.ErrorMessageWrap>
+              {!pwValid && pw.length > 0 && (
+                <span>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.</span>
+              )}
+            </S.ErrorMessageWrap>
+          </S.InputContainer>
+          <S.ButtonWrapper>
+            <S.BottomButton onClick={onclickConfirmButton} disabled={notAllow}>
+              로그인
+            </S.BottomButton>
+          </S.ButtonWrapper>
+        </S.ContentWrap>
+      </S.ContentContainer>
     </S.Page>
   );
 }

@@ -1,36 +1,56 @@
 import styled from "styled-components";
 
 export const Page = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 31.25rem;
-  padding: 0 1.25rem;
-  left: 50%;
-  transform: translate(-50%, 0);
-  background-color: #f7f7f7;
-  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const TitleWrap = styled.div`
-  margin-top: 5.4375rem;
-  font-size: 1.625rem;
-  font-weight: 700;
-  color: #262626;
+export const ContentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25.5rem;
+  height: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid #b8b8b8;
+  padding: 2.5rem 1.5rem;
 `;
 
 export const ContentWrap = styled.div`
-  margin-top: 1.625rem;
-  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  width: 100%;
+  height: 100%;
 `;
 
-export const InputTitle = styled.div`
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #262626;
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: fit-content;
+`;
+
+export const Title = styled.span`
+  font-weight: 700;
+  font-size: 2.375rem;
+  line-height: 3.5rem;
+  color: #25d07d;
+`;
+
+export const SemiTitle = styled.span`
+  font-weight: 400;
+  font-size: 1.625rem;
+  line-height: 2.5rem;
+  color: #bfbfbf;
+`;
+
+export const InputContainer = styled.div`
+  width: 100%;
 `;
 
 export const InputWrap = styled.div`
@@ -39,47 +59,48 @@ export const InputWrap = styled.div`
   padding-left: 1rem;
   margin-top: 0.5rem;
   background-color: #fff;
-  border: 0.0625rem solid #e2e0e0;
+  margin-bottom: 1.5rem;
+  border: 0.0625rem solid #b8b8b8;
   &:focus-within {
-    border: 0.0625rem solid #9e30f4;
+    border: 0.0625rem solid #25d07d;
   }
 `;
 
 export const Input = styled.input`
-  width: 100%;
   outline: none;
+  width: max-content;
   border: none;
   height: 1.0625rem;
   font-size: 0.875rem;
-  font-weight: 400;
   margin: 0.9375rem;
-  margin-left: 0;
   &::placeholder {
     color: #dadada;
   }
 `;
 
 export const ErrorMessageWrap = styled.div`
-  margin-top: 0.5rem;
   color: #ef0000;
   font-size: 0.75rem;
+  margin-top: -1.25rem;
+  position: absolute;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  height: fit-content;
 `;
 
 export const BottomButton = styled.button`
-  width: 100%;
-  height: 3rem;
   border: none;
-  font-weight: 700;
-  background-color: #9e30f4;
-  border-radius: 4rem;
-  color: #fff;
-  margin-bottom: 1rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #fff;
   align-items: center;
   cursor: pointer;
-  &:disabled {
-    background-color: #dadada;
-    color: #fff;
-  }
+  background-color: #25d07d;
+  width: 100%;
+  height: 3.25rem;
 `;
