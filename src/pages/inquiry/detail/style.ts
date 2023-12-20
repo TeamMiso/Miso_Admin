@@ -9,7 +9,6 @@ export const InquiryWrapper = styled.div`
 export const InquiryContainer = styled.div`
   width: 75rem;
   height: 100%;
-  background-color: blue;
   background-color: #fff;
   border-left: solid 0.0625rem #bfbfbf;
   border-right: solid 0.0625rem #bfbfbf;
@@ -107,6 +106,7 @@ export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  bottom: 2rem;
   left: 0;
 `;
 

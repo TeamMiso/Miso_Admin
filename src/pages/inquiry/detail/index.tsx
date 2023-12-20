@@ -56,7 +56,11 @@ const Detail = () => {
       .then((res) => {
         if (res) {
           alert("답변이 완료 되었습니다.");
-          navigate("/");
+          navigate(`/complete/${id}`, {
+            state: {
+              id: `${id}`,
+            },
+          });
         } else {
           alert("권한이 없습니다.");
         }
@@ -111,10 +115,7 @@ const Detail = () => {
               </S.SemiTitleBox>
             </S.TitleBox>
             <S.MainDocumentWrapper>
-              <S.MainText>
-                {content}
-                ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-              </S.MainText>
+              <S.MainText>{content}</S.MainText>
               <S.ImgBox
                 style={{
                   backgroundImage: `url(${imageUrl})`,
