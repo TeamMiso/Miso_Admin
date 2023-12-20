@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -33,6 +33,14 @@ export default function Login() {
       setPwValid(false);
     }
   };
+
+  useEffect(() => {
+    if (emailValid && pwValid) {
+      setNotAllow(false);
+      return;
+    }
+    setNotAllow(true);
+  }, [emailValid, pwValid]);
 
   const api = axios.create({
     baseURL: baseUrl,
@@ -65,14 +73,22 @@ export default function Login() {
       });
 
       if (response.status === 200) {
-        alert("로그인에 성공하셨습니다.");
-        navigate("/");
-
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem(
           "refreshToken",
           "Bearer " + response.data.refreshToken
         );
+        const { data } = await api.get("/user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+        if (data.role === "ROLE_ADMIN") {
+          alert("로그인에 성공하셨습니다.");
+          navigate("/");
+        } else {
+          alert("어드민 계정이 아닙니다.");
+        }
       } else {
         alert("등록되지 않은 회원입니다.");
       }
@@ -87,8 +103,6 @@ export default function Login() {
           });
 
           if (response.status === 200) {
-            alert("로그인에 성공하셨습니다.");
-
             localStorage.setItem("accessToken", response.data.accessToken);
             localStorage.setItem("refreshToken", response.data.refreshToken);
           } else {
@@ -102,14 +116,6 @@ export default function Login() {
       }
     }
   };
-
-  useEffect(() => {
-    if (emailValid && pwValid) {
-      setNotAllow(false);
-      return;
-    }
-    setNotAllow(true);
-  }, [emailValid, pwValid]);
 
   return (
     <S.Page>

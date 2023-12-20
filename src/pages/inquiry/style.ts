@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const InquiryWrapper = styled.div`
+  height: 100vh;
   display: flex;
   justify-content: center;
 `;
 
 export const InquiryContainer = styled.div`
-  padding-top: 7rem;
   width: 75rem;
-  height: 100%;
+  height: calc(100%-7rem);
   background-color: #fff;
   border-left: solid 0.0625rem #bfbfbf;
   border-right: solid 0.0625rem #bfbfbf;
+  padding-top: 7rem;
 `;
 
 export const Title = styled.span`

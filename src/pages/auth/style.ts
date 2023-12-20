@@ -57,7 +57,6 @@ export const InputContainer = styled.div`
 export const InputWrap = styled.div`
   display: flex;
   border-radius: 0.5rem;
-  padding-left: 1rem;
   margin-top: 0.5rem;
   background-color: #fff;
   margin-bottom: 1.5rem;
@@ -69,12 +68,15 @@ export const InputWrap = styled.div`
 
 export const Input = styled.input`
   outline: none;
-  width: max-content;
+  padding: 0 1rem;
+  width: 100%;
   border: none;
-  height: 1.0625rem;
+  height: 54px;
+  border-radius: 0.5rem;
   font-size: 0.875rem;
-  margin: 0.9375rem;
   &::placeholder {
+    margin: 0.9375rem;
+    margin-left: 1rem;
     color: #dadada;
   }
 `;
