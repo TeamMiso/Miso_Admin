@@ -13,18 +13,17 @@ interface InquiryItemType {
 }
 
 const Inquiry = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
   const [inquiryItemList, setInquiryItemList] = useState<InquiryItemType[]>([]);
 
   const fetch = async () => {
-    const { data } = await axios.get(
-      "https://server.miso-gsm.site/inquiry/all",
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    );
+    const { data } = await axios.get(`${baseUrl}/inquiry/all`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
 
     setInquiryItemList(data.inquiryList);
   };

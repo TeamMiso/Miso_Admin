@@ -5,6 +5,8 @@ import axios from "axios";
 import { Header } from "../../../components";
 
 const Detail = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,14 +22,11 @@ const Detail = () => {
   const [mainText, setMainText] = useState("");
 
   const fetch = async () => {
-    const { data } = await axios.get(
-      `https://server.miso-gsm.site/inquiry/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    );
+    const { data } = await axios.get(`${baseUrl}/inquiry/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
 
     setTitle(data.title);
     setContent(data.content);
@@ -44,7 +43,7 @@ const Detail = () => {
   function access() {
     axios({
       method: "patch",
-      url: `https://server.miso-gsm.site/inquiry/respond/${id}`,
+      url: `${baseUrl}/inquiry/respond/${id}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -72,7 +71,7 @@ const Detail = () => {
 
   const fetchInquiry = async () => {
     const { data } = await axios.get(
-      `https://server.miso-gsm.site/notification/${id}`,
+      `${baseUrl}/notification/${id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

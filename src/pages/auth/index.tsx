@@ -4,6 +4,8 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -33,7 +35,7 @@ export default function Login() {
   };
 
   const api = axios.create({
-    baseURL: "https://server.miso-gsm.site",
+    baseURL: baseUrl,
   });
 
   const refreshAccessToken = async () => {

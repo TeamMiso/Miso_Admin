@@ -6,6 +6,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Complete = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,7 +18,7 @@ const Complete = () => {
 
   const fetch = async () => {
     const { data } = await axios.get(
-      `https://server.miso-gsm.site/inquiry/${id}`,
+      `${baseUrl}/inquiry/${id}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

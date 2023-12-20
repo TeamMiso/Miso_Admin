@@ -4,10 +4,12 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
 
   const logOutHandler = async () => {
-    const logOut = await axios.delete("https://server.miso-gsm.site/auth", {
+    const logOut = await axios.delete(`${baseUrl}/auth`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
