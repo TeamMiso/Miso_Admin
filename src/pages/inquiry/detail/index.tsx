@@ -79,8 +79,6 @@ const Detail = () => {
     setInquiryText(data.content);
   };
 
-  console.log(inquiryText);
-
   const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMainText(e.target.value);
   };
@@ -89,59 +87,66 @@ const Detail = () => {
     <S.InquiryWrapper>
       <Header />
       <S.InquiryContainer>
-        <S.InquiryBox>
-          <S.BackText onClick={() => navigate("/")}>{"< 돌아가기"}</S.BackText>
-          <S.TitleBox>
-            <S.MainTitle>{title}</S.MainTitle>
-            <S.SemiTitleBox>
-              <span>
-                {`${inquiryDate.slice(2, 4)}.${inquiryDate.slice(
-                  5,
-                  7
-                )}.${inquiryDate.slice(8, 10)}`}
-              </span>
-              <span
+        <S.InquiryOutBox>
+          <S.InquiryBox>
+            <S.BackText onClick={() => navigate("/")}>
+              {"< 돌아가기"}
+            </S.BackText>
+            <S.TitleBox>
+              <S.MainTitle>{title}</S.MainTitle>
+              <S.SemiTitleBox>
+                <span>
+                  {`${inquiryDate.slice(2, 4)}.${inquiryDate.slice(
+                    5,
+                    7
+                  )}.${inquiryDate.slice(8, 10)}`}
+                </span>
+                <span
+                  style={{
+                    color: inquiryStatus === "WAIT" ? "#BFBFBF" : "#25D07D",
+                  }}
+                >
+                  {inquiryStatus === "WAIT" ? "검토 중" : "답변 완료"}
+                </span>
+              </S.SemiTitleBox>
+            </S.TitleBox>
+            <S.MainDocumentWrapper>
+              <S.MainText>
+                {content}
+                ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+              </S.MainText>
+              <S.ImgBox
                 style={{
-                  color: inquiryStatus === "WAIT" ? "#BFBFBF" : "#25D07D",
+                  backgroundImage: `url(${imageUrl})`,
                 }}
-              >
-                {inquiryStatus === "WAIT" ? "검토 중" : "답변 완료"}
-              </span>
-            </S.SemiTitleBox>
-          </S.TitleBox>
-          <S.MainDocumentWrapper>
-            <S.MainText>{content}</S.MainText>
-            <S.ImgBox
+              />
+            </S.MainDocumentWrapper>
+            <S.AnswerContainer>
+              <span>답변내용</span>
+              <S.AnswerBox
+                style={{
+                  display: inquiryStatus === "WAIT" ? "flex" : "none",
+                }}
+                placeholder="답변 내용 쓰기"
+                onChange={handleText}
+              />
+            </S.AnswerContainer>
+            <S.AnswerText
               style={{
-                backgroundImage: `url(${imageUrl})`,
+                display: inquiryStatus === "WAIT" ? "none" : "flex",
               }}
-            />
-          </S.MainDocumentWrapper>
-          <S.AnswerContainer>
-            <span>답변내용</span>
-            <S.AnswerBox
-              style={{
-                display: inquiryStatus === "WAIT" ? "flex" : "none",
-              }}
-              placeholder="답변 내용 쓰기"
-              onChange={handleText}
-            />
-          </S.AnswerContainer>
-          <S.AnswerText
+            >
+              {inquiryText}
+            </S.AnswerText>
+          </S.InquiryBox>
+          <S.ButtonContainer
             style={{
-              display: inquiryStatus === "WAIT" ? "none" : "flex",
+              display: inquiryStatus === "WAIT" ? "flex" : "none",
             }}
           >
-            {inquiryText}
-          </S.AnswerText>
-        </S.InquiryBox>
-        <S.ButtonContainer
-          style={{
-            display: inquiryStatus === "WAIT" ? "flex" : "none",
-          }}
-        >
-          <S.AccessButton onClick={() => access()}>답변하기</S.AccessButton>
-        </S.ButtonContainer>
+            <S.AccessButton onClick={() => access()}>답변하기</S.AccessButton>
+          </S.ButtonContainer>
+        </S.InquiryOutBox>
       </S.InquiryContainer>
     </S.InquiryWrapper>
   );

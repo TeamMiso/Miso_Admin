@@ -1,21 +1,25 @@
 import styled from "styled-components";
 
 export const InquiryWrapper = styled.div`
+  height: 100vh;
   display: flex;
   justify-content: center;
-  height: 100vh;
 `;
 
 export const InquiryContainer = styled.div`
   width: 75rem;
   height: 100%;
+  background-color: blue;
   background-color: #fff;
-  border-left: solid 1px #bfbfbf;
-  border-right: solid 1px #bfbfbf;
+  border-left: solid 0.0625rem #bfbfbf;
+  border-right: solid 0.0625rem #bfbfbf;
+`;
+
+export const InquiryOutBox = styled.div`
+  margin: 0 1.5rem;
 `;
 
 export const InquiryBox = styled.div`
-  margin: 0 2.5rem;
   margin-top: 7rem;
 `;
 
@@ -36,7 +40,6 @@ export const MainTitle = styled.span`
 `;
 
 export const SemiTitleBox = styled.div`
-  display: flex;
   span {
     font-size: 1.5rem;
     margin-right: 0.5rem;
@@ -46,24 +49,22 @@ export const SemiTitleBox = styled.div`
 `;
 
 export const MainDocumentWrapper = styled.div`
-  margin-top: 1.5rem;
+  border-bottom: solid 0.0625rem #bfbfbf;
   display: flex;
   justify-content: space-between;
-  border-bottom: solid 1px #bfbfbf;
+  padding: 1.5rem 0;
 `;
 
 export const MainText = styled.div`
-  width: 42.75rem;
-  margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 2rem;
+  max-width: 45rem;
 `;
 
 export const ImgBox = styled.div`
   width: 26.25rem;
   height: 17.5rem;
-  margin-bottom: 1.5rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

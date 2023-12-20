@@ -10,8 +10,8 @@ export const InquiryContainer = styled.div`
   width: 75rem;
   height: 100%;
   background-color: #fff;
-  border-left: solid 1px #bfbfbf;
-  border-right: solid 1px #bfbfbf;
+  border-left: solid 0.0625rem #bfbfbf;
+  border-right: solid 0.0625rem #bfbfbf;
 `;
 
 export const Title = styled.span`
