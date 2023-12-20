@@ -54,7 +54,6 @@ const Detail = () => {
     })
       .then((res) => {
         if (res) {
-          alert("답변이 완료 되었습니다.");
           navigate(`/complete/${id}`, {
             state: {
               id: `${id}`,
@@ -70,14 +69,11 @@ const Detail = () => {
   }
 
   const fetchInquiry = async () => {
-    const { data } = await axios.get(
-      `${baseUrl}/notification/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    );
+    const { data } = await axios.get(`${baseUrl}/notification/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
 
     setInquiryText(data.content);
   };
