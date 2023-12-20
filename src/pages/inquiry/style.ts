@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const InquiryWrapper = styled.div`
-  height: 100vh;
   display: flex;
   justify-content: center;
+  min-height: 100vh;
 `;
 
 export const InquiryContainer = styled.div`
   width: 75rem;
-  height: calc(100%-7rem);
   background-color: #fff;
   border-left: solid 0.0625rem #bfbfbf;
   border-right: solid 0.0625rem #bfbfbf;
