@@ -22,17 +22,22 @@ const Detail = () => {
   const [mainText, setMainText] = useState("");
 
   const fetch = async () => {
-    const { data } = await axios.get(`${baseUrl}/inquiry/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
+    try {
+      const { data } = await axios.get(`${baseUrl}/inquiry/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
 
-    setTitle(data.title);
-    setContent(data.content);
-    setImageUrl(data.imageUrl);
-    setInquiryStatus(data.inquiryStatus);
-    setInquiryDate(data.inquiryDate);
+      setTitle(data.title);
+      setContent(data.content);
+      setImageUrl(data.imageUrl);
+      setInquiryStatus(data.inquiryStatus);
+      setInquiryDate(data.inquiryDate);
+    } catch (error: any) {
+      alert("토큰이 만료되었습니다.");
+      navigate("/auth");
+    }
   };
 
   useEffect(() => {

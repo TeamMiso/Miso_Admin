@@ -19,13 +19,18 @@ const Inquiry = () => {
   const [inquiryItemList, setInquiryItemList] = useState<InquiryItemType[]>([]);
 
   const fetch = async () => {
-    const { data } = await axios.get(`${baseUrl}/inquiry/all`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
+    try {
+      const { data } = await axios.get(`${baseUrl}/inquiry/all`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
 
-    setInquiryItemList(data.inquiryList);
+      setInquiryItemList(data.inquiryList);
+    } catch (error: any) {
+      alert("토큰이 만료되었습니다.");
+      navigate("/auth");
+    }
   };
 
   useEffect(() => {
