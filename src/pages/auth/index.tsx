@@ -87,7 +87,7 @@ export default function Login() {
           alert("로그인에 성공하셨습니다.");
           navigate("/");
         } else {
-          alert("어드민 계정이 아닙니다.");
+          alert("관리자 계정이 아닙니다.");
         }
       } else {
         alert("등록되지 않은 회원입니다.");

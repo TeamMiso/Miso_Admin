@@ -48,8 +48,7 @@ const Detail = () => {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       data: {
-        title: title,
-        content: mainText,
+        answer: mainText,
       },
     })
       .then((res) => {
@@ -75,7 +74,7 @@ const Detail = () => {
       },
     });
 
-    setInquiryText(data.content);
+    setInquiryText(data.answer);
   };
 
   const handleText = (e: ChangeEvent<HTMLTextAreaElement>) => {
