@@ -6,18 +6,20 @@ import axios from "axios";
 interface ModalProps {
   isOpen: boolean;
   title: string;
-  content1: string;
-  content2: string;
+  content: string;
   button: string;
+  id: string;
+  mainText: string;
   closeModal: () => void;
 }
 
 const Modal: FC<ModalProps> = ({
   isOpen,
   title,
-  content1,
-  content2,
+  content,
   button,
+  id,
+  mainText,
   closeModal,
 }) => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -42,6 +44,33 @@ const Modal: FC<ModalProps> = ({
     }
   };
 
+  function access() {
+    axios({
+      method: "patch",
+      url: `${baseUrl}/inquiry/respond/${id}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      data: {
+        answer: mainText,
+      },
+    })
+      .then((res) => {
+        if (res) {
+          navigate(`/complete/${id}`, {
+            state: {
+              id: `${id}`,
+            },
+          });
+        } else {
+          alert("권한이 없습니다.");
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
   return (
     <S.ModalBg
       style={{ display: isOpen ? "block" : "none" }}
@@ -51,13 +80,12 @@ const Modal: FC<ModalProps> = ({
         <S.ModalContainer>
           <S.ModalTextBox>
             <S.Title>{title}</S.Title>
-            <S.Content>{content1}</S.Content>
-            <S.Content>{content2}</S.Content>
+            <S.Content>{content}</S.Content>
           </S.ModalTextBox>
           <S.ButtonContainer>
             <S.ButtonText onClick={closeModal}>돌아가기</S.ButtonText>
             <S.ButtonText
-              onClick={button === "로그아웃" ? logOutHandler : logOutHandler}
+              onClick={button === "로그아웃" ? logOutHandler : access}
             >
               {button}
             </S.ButtonText>

@@ -57,6 +57,7 @@ export const Content = styled.span`
 export const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
+  margin-right: 0.5rem;
   justify-content: flex-end;
 `;
 
