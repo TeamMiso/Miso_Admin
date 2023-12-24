@@ -1,31 +1,13 @@
-import axios from "axios";
 import MisoIcon from "../../assets/png/Miso_icon.png";
 import * as S from "./style";
-import { useNavigate } from "react-router-dom";
+import { Modal } from "..";
+import { useState } from "react";
 
 const Header = () => {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const navigate = useNavigate();
-
-  const logOutHandler = async () => {
-    const logOut = await axios.delete(`${baseUrl}/auth`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    });
-
-    if (logOut.status === 204) {
-      alert("로그아웃 하셨습니다.");
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      navigate("/auth");
-    } else if (logOut.status === 404) {
-      alert("존재하지 않는 유저 입니다.");
-    } else {
-      alert("토큰이 존재하지 않습니다.");
-    }
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <S.HeaderWrapper>
@@ -33,10 +15,19 @@ const Header = () => {
         <S.HeaderMainWrapper>
           <S.HeaderMainContainer>
             <img src={MisoIcon} alt="미소 로고" />
-            <S.LogOutButton onClick={logOutHandler}>로그아웃</S.LogOutButton>
+            <S.LogOutButton onClick={openModal}>로그아웃</S.LogOutButton>
           </S.HeaderMainContainer>
         </S.HeaderMainWrapper>
       </S.HeaderContainer>
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        title={"로그아웃 하시겠습니까?"}
+        content={"정말로 로그아웃 하시겠습니까?"}
+        button={"로그아웃"}
+        id={""}
+        mainText={""}
+      />
     </S.HeaderWrapper>
   );
 };
