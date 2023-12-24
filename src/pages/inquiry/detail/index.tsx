@@ -3,6 +3,7 @@ import * as S from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Header } from "../../../components";
+import { Modal } from "../../../components";
 
 const Detail = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -20,6 +21,10 @@ const Detail = () => {
   const [inquiryDate, setInquiryDate] = useState("");
   const [inquiryText, setInquiryText] = useState("");
   const [mainText, setMainText] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const fetch = async () => {
     try {
@@ -44,33 +49,6 @@ const Detail = () => {
     fetch();
     fetchInquiry();
   }, []);
-
-  function access() {
-    axios({
-      method: "patch",
-      url: `${baseUrl}/inquiry/respond/${id}`,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      data: {
-        answer: mainText,
-      },
-    })
-      .then((res) => {
-        if (res) {
-          navigate(`/complete/${id}`, {
-            state: {
-              id: `${id}`,
-            },
-          });
-        } else {
-          alert("권한이 없습니다.");
-        }
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  }
 
   const fetchInquiry = async () => {
     const { data } = await axios.get(`${baseUrl}/notification/${id}`, {
@@ -144,10 +122,19 @@ const Detail = () => {
               display: inquiryStatus === "WAIT" ? "flex" : "none",
             }}
           >
-            <S.AccessButton onClick={() => access()}>답변하기</S.AccessButton>
+            <S.AccessButton onClick={openModal}>답변하기</S.AccessButton>
           </S.ButtonContainer>
         </S.InquiryOutBox>
       </S.InquiryContainer>
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        title={"답변을 게시할까요?"}
+        content={title}
+        button={"답변 게시"}
+        id={id}
+        mainText={mainText}
+      />
     </S.InquiryWrapper>
   );
 };
