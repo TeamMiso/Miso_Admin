@@ -40,7 +40,7 @@ const Detail = () => {
       setInquiryStatus(data.inquiryStatus);
       setInquiryDate(data.inquiryDate);
     } catch (error: any) {
-      alert("토큰이 만료되었습니다.");
+      alert("토큰이 만료되었습니다. 다시 로그인 해주세요.");
       navigate("/auth");
     }
   };
@@ -130,7 +130,8 @@ const Detail = () => {
         isOpen={isModalOpen}
         closeModal={closeModal}
         title={"답변을 게시할까요?"}
-        content={title}
+        content1={"한 번 답변하면 수정할 수 없어요!"}
+        content2={"신중히 답변해 보아요 :)"}
         button={"답변 게시"}
         id={id}
         mainText={mainText}

@@ -34,6 +34,7 @@ export const ModalTextBox = styled.div`
   width: max-content;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Title = styled.span`
@@ -46,7 +47,7 @@ export const Title = styled.span`
 `;
 
 export const Content = styled.span`
-  width: 100%;
+  width: 22rem;
   color: #6b6b6b;
   text-align: center;
   font-weight: 300;

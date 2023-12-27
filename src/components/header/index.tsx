@@ -23,7 +23,8 @@ const Header = () => {
         isOpen={isModalOpen}
         closeModal={closeModal}
         title={"로그아웃 하시겠습니까?"}
-        content={"정말로 로그아웃 하시겠습니까?"}
+        content1={"정말로 로그아웃 하시겠습니까?"}
+        content2={""}
         button={"로그아웃"}
         id={""}
         mainText={""}

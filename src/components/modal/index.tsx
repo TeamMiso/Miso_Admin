@@ -6,7 +6,8 @@ import axios from "axios";
 interface ModalProps {
   isOpen: boolean;
   title: string;
-  content: string;
+  content1: string;
+  content2: string;
   button: string;
   id: string;
   mainText: string;
@@ -16,7 +17,8 @@ interface ModalProps {
 const Modal: FC<ModalProps> = ({
   isOpen,
   title,
-  content,
+  content1,
+  content2,
   button,
   id,
   mainText,
@@ -40,7 +42,7 @@ const Modal: FC<ModalProps> = ({
     } else if (logOut.status === 404) {
       alert("존재하지 않는 유저 입니다.");
     } else {
-      alert("토큰이 존재하지 않습니다.");
+      alert("존재하지 않는 토큰입니다.");
     }
   };
 
@@ -80,7 +82,8 @@ const Modal: FC<ModalProps> = ({
         <S.ModalContainer>
           <S.ModalTextBox>
             <S.Title>{title}</S.Title>
-            <S.Content>{content}</S.Content>
+            <S.Content>{content1}</S.Content>
+            <S.Content>{content2}</S.Content>
           </S.ModalTextBox>
           <S.ButtonContainer>
             <S.ButtonText onClick={closeModal}>돌아가기</S.ButtonText>
