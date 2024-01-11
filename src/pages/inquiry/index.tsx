@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Header } from "../../components";
+import { Filter, Header } from "../../components";
 
 interface InquiryItemType {
   id: any;
@@ -40,6 +40,7 @@ const Inquiry = () => {
   return (
     <S.InquiryWrapper>
       <Header />
+      <Filter />
       <S.InquiryContainer>
         <S.Title>문의목록</S.Title>
         <S.InquiryItemContainer>
