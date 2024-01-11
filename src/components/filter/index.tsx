@@ -1,9 +1,6 @@
 import * as S from "./style";
 
 const Filter = (props: any) => {
-  console.log(props.isReviewChecked);
-  console.log(props.isAnswerChecked);
-
   return (
     <S.FilterWrapper>
       <S.FilterContainer>
