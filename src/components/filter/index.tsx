@@ -1,6 +1,9 @@
 import * as S from "./style";
 
-const Filter = () => {
+const Filter = (props: any) => {
+  console.log(props.isReviewChecked);
+  console.log(props.isAnswerChecked);
+
   return (
     <S.FilterWrapper>
       <S.FilterContainer>
@@ -8,11 +11,19 @@ const Filter = () => {
         <S.SelectList>
           <S.Selector>
             <span>검토 중</span>
-            <S.Input type="checkbox" />
+            <S.Input
+              type="checkbox"
+              checked={props.isReviewChecked}
+              onChange={() => props.setReviewChecked(!props.isReviewChecked)}
+            />
           </S.Selector>
           <S.Selector>
             <span>답변 완료</span>
-            <S.Input type="checkbox" />
+            <S.Input
+              type="checkbox"
+              checked={props.isAnswerChecked}
+              onChange={() => props.setAnswerChecked(!props.isAnswerChecked)}
+            />
           </S.Selector>
         </S.SelectList>
       </S.FilterContainer>

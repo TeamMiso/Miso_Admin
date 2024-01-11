@@ -37,10 +37,18 @@ const Inquiry = () => {
     fetch();
   }, []);
 
+  const [isReviewChecked, setReviewChecked] = useState(true);
+  const [isAnswerChecked, setAnswerChecked] = useState(true);
+
   return (
     <S.InquiryWrapper>
       <Header />
-      <Filter />
+      <Filter
+        isReviewChecked={isReviewChecked}
+        setReviewChecked={setReviewChecked}
+        isAnswerChecked={isAnswerChecked}
+        setAnswerChecked={setAnswerChecked}
+      />
       <S.InquiryContainer>
         <S.Title>문의목록</S.Title>
         <S.InquiryItemContainer>
@@ -54,6 +62,18 @@ const Inquiry = () => {
                     },
                   })
                 }
+                style={{
+                  display:
+                    data.inquiryStatus === "WAIT"
+                      ? isReviewChecked === false
+                        ? "none"
+                        : "flex"
+                      : data.inquiryStatus === "COMPLETE"
+                      ? isAnswerChecked === false
+                        ? "none"
+                        : "flex"
+                      : "flex",
+                }}
                 key={data.id}
               >
                 <S.InquiryItemInner>

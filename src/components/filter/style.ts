@@ -35,9 +35,10 @@ export const Selector = styled.div`
 
 export const Input = styled.input`
   appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 8px;
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.5rem;
   background-color: #bfbfbf;
   &:checked {
     background-color: #288be1;
