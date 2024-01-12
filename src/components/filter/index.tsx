@@ -8,25 +8,17 @@ const Filter = (props: any) => {
           <S.FilterContainer>
             <S.Title>필터</S.Title>
             <S.SelectList>
-              <S.Selector>
+              <S.Selector
+                onClick={() => props.setReviewChecked(!props.isReviewChecked)}
+              >
                 <span>검토 중</span>
-                <S.Input
-                  type="checkbox"
-                  checked={props.isReviewChecked}
-                  onChange={() =>
-                    props.setReviewChecked(!props.isReviewChecked)
-                  }
-                />
+                <S.Input type="checkbox" checked={props.isReviewChecked} />
               </S.Selector>
-              <S.Selector>
+              <S.Selector
+                onClick={() => props.setAnswerChecked(!props.isAnswerChecked)}
+              >
                 <span>답변 완료</span>
-                <S.Input
-                  type="checkbox"
-                  checked={props.isAnswerChecked}
-                  onChange={() =>
-                    props.setAnswerChecked(!props.isAnswerChecked)
-                  }
-                />
+                <S.Input type="checkbox" checked={props.isAnswerChecked} />
               </S.Selector>
             </S.SelectList>
           </S.FilterContainer>

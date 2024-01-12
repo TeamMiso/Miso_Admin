@@ -41,6 +41,7 @@ export const Selector = styled.div`
   margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
   span {
     font-size: 1rem;
     font-weight: 400;
@@ -50,7 +51,6 @@ export const Selector = styled.div`
 
 export const Input = styled.input`
   appearance: none;
-  cursor: pointer;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 0.5rem;
