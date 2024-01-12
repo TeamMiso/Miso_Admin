@@ -1,13 +1,26 @@
 import styled from "styled-components";
 
-export const FilterWrapper = styled.div`
+export const FilterOuterBox = styled.div`
   position: fixed;
-  right: 9rem;
-  top: 7.5rem;
+  height: 100vh;
+  width: calc((100vw - 1200px) / 2);
+  right: 0;
+  display: flex;
+  justify-content: center;
+`;
+
+export const FilterInnerBox = styled.div`
+  width: 10rem;
+  padding: 0 1rem;
+`;
+
+export const FilterWrapper = styled.div`
+  margin-top: 7.5rem;
   background-color: #fff;
   border-radius: 0.5rem;
   border: 0.0625rem solid #bfbfbf;
-  width: 10rem;
+  height: fit-content;
+  width: 100%;
 `;
 
 export const FilterContainer = styled.div`
@@ -20,10 +33,12 @@ export const Title = styled.span`
   line-height: 2rem;
 `;
 
-export const SelectList = styled.div``;
+export const SelectList = styled.div`
+  margin-top: 1rem;
+`;
 
 export const Selector = styled.div`
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-between;
   span {
