@@ -1,6 +1,6 @@
-import MisoIcon from "../../assets/png/MisoIcon.png";
+import MisoIcon from "@/assets/png/MisoIcon.png";
 import * as S from "./style";
-import { Modal } from "..";
+import { Modal } from "@/components";
 import { useState } from "react";
 
 const Header = () => {

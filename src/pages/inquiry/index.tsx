@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Filter, Header } from "../../components";
+import { Filter, Header } from "@/components";
 
 interface InquiryItemType {
   id: any;

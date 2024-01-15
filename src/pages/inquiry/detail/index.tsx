@@ -2,8 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import * as S from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Header } from "../../../components";
-import { Modal } from "../../../components";
+import { Header, Modal } from "@/components";
 
 const Detail = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;

@@ -1,5 +1,5 @@
-import { Header } from "../../../components";
-import CheckIcon from "../../../assets/png/CheckIcon.png";
+import { Header } from "@/components";
+import CheckIcon from "@/assets/png/CheckIcon.png";
 import * as S from "./style";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
