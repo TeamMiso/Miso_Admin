@@ -1,5 +1,5 @@
 import { Header } from "../../../components";
-import CheckIcon from "../../../assets/png/check_icon.png";
+import CheckIcon from "../../../assets/png/CheckIcon.png";
 import * as S from "./style";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Complete = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,14 +17,11 @@ const Complete = () => {
   const [inquiryDate, setInquiryDate] = useState("");
 
   const fetch = async () => {
-    const { data } = await axios.get(
-      `${baseUrl}/inquiry/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    );
+    const { data } = await axios.get(`${baseUrl}/inquiry/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    });
 
     setTitle(data.title);
     setInquiryDate(data.inquiryDate);

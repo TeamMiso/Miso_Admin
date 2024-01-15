@@ -1,4 +1,4 @@
-import MisoIcon from "../../assets/png/Miso_icon.png";
+import MisoIcon from "../../assets/png/MisoIcon.png";
 import * as S from "./style";
 import { Modal } from "..";
 import { useState } from "react";
